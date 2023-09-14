@@ -1,9 +1,9 @@
 import styles from "./OfficesList.module.css";
-import Spinner from "./Spinner";
-import Message from "./Message";
-import OfficeItem from "./OfficeItem";
+import Spinner from "../Spinner/Spinner";
+import Message from "../Message/Message";
+import OfficeItem from "../OfficeItem/OfficeItem";
 // import { useOffice } from "../contexts/officeContext";
-import { useIcons } from "../contexts/IconsContext";
+import { useIcons } from "../../contexts/IconsContext";
 
 function OfficesList() {
   const { icons, isLoading } = useIcons();

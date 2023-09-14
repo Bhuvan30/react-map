@@ -1,8 +1,8 @@
-.login {
+.signUp {
   margin: 1rem;
   padding: 2.5rem 5rem;
   background-color: var(--color-dark--1);
-  min-height: calc(100vh - 8rem);
+  min-height: calc(100vh - 10rem);
 }
 
 .form {
@@ -23,17 +23,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.signUpTag {
-  margin-left: 4px;
-  color: white;
-  width: max-content;
-  text-decoration: none;
-  font-size: 1.4rem;
-}
-.signUpTag:hover {
-  border-bottom: 2px solid;
 }
 
 .perti {

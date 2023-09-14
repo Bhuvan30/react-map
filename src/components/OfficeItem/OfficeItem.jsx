@@ -1,6 +1,7 @@
+import styles from "./OfficeItem.module.css";
 import { Link } from "react-router-dom";
-import styles from "./Binitem.module.css";
-import { useIcons } from "../contexts/IconsContext";
+
+import { useIcons } from "../../contexts/IconsContext";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,15 +10,15 @@ const formatDate = (date) =>
     year: "numeric",
   }).format(new Date(date));
 
-function Binitem({ icon }) {
+function OfficeItem({ icon }) {
   const { currentIcon } = useIcons();
   const { iconName, emoji, area, id, position } = icon;
 
   return (
     <li>
       <Link
-        className={`${styles.binItem} ${
-          id === currentIcon.id ? styles["binItem--active"] : ""
+        className={`${styles.officeItem} ${
+          id === currentIcon.id ? styles["officeItem--active"] : ""
         }`}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
@@ -29,4 +30,4 @@ function Binitem({ icon }) {
   );
 }
 
-export default Binitem;
+export default OfficeItem;

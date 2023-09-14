@@ -1,11 +1,11 @@
-import PageNav from "../components/PageNav";
-import Sidebar from "../components/Sidebar";
+import PageNav from "../components/PageNav/PageNav";
+import Sidebar from "../components/Sidebar/Sidebar";
 import styles from "./MapLayout.module.css";
-import Map from "../components/Map";
+import Map from "../components/Map/Map";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useIcons } from "../contexts/IconsContext";
 import { useEffect } from "react";
-import User from "../components/User";
+import User from "../components/User/User";
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in kilometers

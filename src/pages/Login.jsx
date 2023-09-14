@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
-import PageNav from "../components/PageNav";
-import Button from "../components/Button";
+import PageNav from "../components/PageNav/PageNav";
+import Button from "../components/Button/Button";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
@@ -17,6 +18,11 @@ export default function Login() {
     e.preventDefault();
 
     if (email && password) login(email, password);
+  }
+
+  function handelSignIn(e) {
+    e.preventDefault();
+    navigate("/SignIn", { replace: true });
   }
 
   useEffect(
@@ -43,7 +49,7 @@ export default function Login() {
             />
           </div>
 
-          <div className={styles.row}>
+          <div className={(styles.row, styles.perti)}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -56,6 +62,14 @@ export default function Login() {
           <div>
             <Button type="primary">Login</Button>
           </div>
+          {/* <button onClick={handelSignIn}>SignIn</button> */}
+          <Link
+            to="/signIn"
+            className={styles.signUpTag}
+            // style={{ color: "white" }}
+          >
+            Sign In
+          </Link>
         </form>
       </main>
     </div>

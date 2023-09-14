@@ -1,8 +1,8 @@
-import Binitem from "./Binitem";
+import Binitem from "../BinItem/Binitem";
 import styles from "./BinsList.module.css";
-import Spinner from "./Spinner";
-import Message from "./Message";
-import { useIcons } from "../contexts/IconsContext";
+import Spinner from "../Spinner/Spinner";
+import Message from "../Message/Message";
+import { useIcons } from "../../contexts/IconsContext";
 import { icon } from "leaflet";
 
 function BinsList() {

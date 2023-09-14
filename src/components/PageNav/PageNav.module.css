@@ -40,3 +40,13 @@ a.ctaLink:visited {
 .home {
   margin-right: 500px;
 }
+
+.NotLogin {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  /* color: var(--color-brand--2); */
+}

@@ -2,13 +2,14 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import MapLayout from "./pages/MapLayout";
-import BinsList from "./components/BinsList";
-import OfficesList from "./components/OfficesList";
-import City from "./components/City";
+import BinsList from "./components/BinsList/BinsList";
+import OfficesList from "./components/OfficesList/OfficesList";
+import City from "./components/City/City";
 import { IconsProvider } from "./contexts/IconsContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import SignIn from "./pages/SignUp";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path="offices" element={<OfficesList />} />
             </Route>
             <Route path="login" element={<Login />} />
+            <Route path="signIn" element={<SignIn />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

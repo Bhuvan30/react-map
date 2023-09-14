@@ -2,13 +2,13 @@ import { useSearchParams } from "react-router-dom";
 import styles from "./Map.module.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useState } from "react";
-import { useIcons } from "../contexts/IconsContext";
-import { useGeolocation } from "../hooks/useGeolocation";
-import Button from "./Button";
+import { useIcons } from "../../contexts/IconsContext";
+import { useGeolocation } from "../../hooks/useGeolocation";
+import Button from "../Button/Button";
 import L from "leaflet"; // Make sure to import the 'leaflet' library
-import trashIcon from "../../public/trash.png";
-import officeIcon from "../../public/office.png";
-import currentLocIcon from "../../public/currentLoc.png";
+import trashIcon from "../../../public/trash.png";
+import officeIcon from "../../../public/office.png";
+import currentLocIcon from "../../../public/currentLoc.png";
 
 function GetIcon(Mapicon) {
   return L.icon({
