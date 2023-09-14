@@ -5,24 +5,38 @@ import MapLayout from "./pages/MapLayout";
 import BinsList from "./components/BinsList";
 import OfficesList from "./components/OfficesList";
 import City from "./components/City";
-import { BinsProvider } from "./contexts/BinsContext";
+import { IconsProvider } from "./contexts/IconsContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./pages/Login";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
-    <BinsProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="mapLayout" element={<MapLayout />}>
-            <Route index element={<Navigate replace to="bins" />} />
-            <Route path="bins" element={<BinsList />} />
-            <Route path="bins/:id" element={<City />} />
-            <Route path="offices" element={<OfficesList />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </BinsProvider>
+    <AuthProvider>
+      <IconsProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route
+              path="mapLayout"
+              element={
+                <ProtectedRoute>
+                  <MapLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate replace to="bins" />} />
+              <Route path="bins" element={<BinsList />} />
+              <Route path="bins/:id" element={<City />} />
+              <Route path="offices/:id" element={<City />} />
+              <Route path="offices" element={<OfficesList />} />
+            </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </IconsProvider>
+    </AuthProvider>
   );
 }
 

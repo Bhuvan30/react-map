@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Binitem.module.css";
-import { useBins } from "../contexts/BinsContext";
+import { useIcons } from "../contexts/IconsContext";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,22 +9,21 @@ const formatDate = (date) =>
     year: "numeric",
   }).format(new Date(date));
 
-function Binitem({ bin }) {
-  const { currentBin } = useBins();
-  const { cityName, emoji, date, id, position } = bin;
+function Binitem({ icon }) {
+  const { currentIcon } = useIcons();
+  const { iconName, emoji, area, id, position } = icon;
 
   return (
     <li>
       <Link
         className={`${styles.binItem} ${
-          id === currentBin.id ? styles["binItem--active"] : ""
+          id === currentIcon.id ? styles["binItem--active"] : ""
         }`}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}>{emoji}</span>
-        <span className={styles.name}>{cityName}</span>
-        <span className={styles.date}>({formatDate(date)})</span>
-        <button className={styles.deleteBtn}>&times;</button>
+        <span className={styles.name}>{iconName}</span>
+        <span className={styles.date}>{area}</span>
       </Link>
     </li>
   );

@@ -1,71 +1,71 @@
 {
   "icons": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
       "emoji": "🏢",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
       "position": {
         "lat": 13.115585,
         "lng": 77.633392
       },
+      "iconName": "Office",
+      "area": "Sathanur, Karnataka, India",
+      "notes": "",
+      "condition": null,
       "icon": "officeIcon",
       "distance": null,
       "id": 73930385
     },
     {
-      "cityName": "Madrid",
-      "country": "Spain",
       "emoji": "🗑️",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
       "position": {
         "lat": 13.116264,
         "lng": 77.633037
       },
+      "iconName": "Bin",
+      "area": "Sathanur, Karnataka, India",
+      "notes": "",
+      "condition": "empty",
       "icon": "trashIcon",
       "distance": null,
       "id": 17806751
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
       "emoji": "🗑️",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
       "position": {
         "lat": 13.118677,
         "lng": 77.632973
       },
+      "iconName": "Bin",
+      "area": "Sathanur, Karnataka, India",
+      "notes": "",
+      "condition": "full",
       "icon": "trashIcon",
       "distance": null,
       "id": 98443198
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
       "emoji": "🗑️",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
       "position": {
         "lat": 13.114174,
         "lng": 77.633542
       },
+      "iconName": "Bin",
+      "area": "Sathanur, Karnataka, India",
+      "notes": "",
+      "condition": "in repair",
       "icon": "trashIcon",
       "distance": null,
       "id": 98443199
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
       "emoji": "🏢",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
       "position": {
         "lat": 13.113094,
         "lng": 77.631167
       },
+      "iconName": "Office",
+      "area": "Sathanur, Karnataka, India",
+      "notes": "",
+      "condition": null,
       "icon": "officeIcon",
       "distance": null,
       "id": 98443200

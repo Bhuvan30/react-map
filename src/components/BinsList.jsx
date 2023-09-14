@@ -2,20 +2,22 @@ import Binitem from "./Binitem";
 import styles from "./BinsList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
-import { useBins } from "../contexts/BinsContext";
+import { useIcons } from "../contexts/IconsContext";
+import { icon } from "leaflet";
 
 function BinsList() {
-  const { bins, isLoading } = useBins();
+  const { icons, isLoading } = useIcons();
 
   if (isLoading) return <Spinner />;
 
-  if (!bins.length) return <Message message="hello" />;
+  if (!icons.length) return <Message message="hello" />;
 
   return (
     <ul className={styles.binsList}>
-      {bins.map((bin) => (
-        <Binitem bin={bin} key={bin.id} />
-      ))}
+      {icons.map((icon) => {
+        if (icon.icon === "trashIcon")
+          return <Binitem icon={icon} key={icon.id} />;
+      })}
     </ul>
   );
 }

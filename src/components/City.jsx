@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
-import { useBins } from "../contexts/BinsContext";
-import { useEffect } from "react";
+import { useIcons } from "../contexts/IconsContext";
+import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
-
+console;
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -15,32 +15,52 @@ const formatDate = (date) =>
 
 function City() {
   const { id } = useParams();
-  const { getBin, currentBin, isLoading } = useBins();
+  const { getIcon, currentIcon, isLoading, icons } = useIcons();
+  const { iconName, emoji, area, notes, distance, condition } = currentIcon;
 
   useEffect(
     function () {
-      getBin(id);
+      getIcon(id);
     },
     [id]
   );
 
-  const { cityName, emoji, date, notes } = currentBin;
-
   if (isLoading) return <Spinner />;
+
+  icons.map((icon) => {
+    if (icon.id === currentIcon.id) {
+      currentIcon.distance = icon.distance;
+    }
+  });
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City name</h6>
+        <h6>name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <span>{emoji}</span> {iconName}
         </h3>
       </div>
 
       <div className={styles.row}>
-        <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date || null)}</p>
+        <h6>
+          {"area"} : {id}{" "}
+        </h6>
+        <p>{area}</p>
       </div>
+
+      <div className={styles.row}>
+        <h6>Approximate distance from your Location</h6>
+        <p>{distance} km</p>
+      </div>
+      {condition !== null ? (
+        <div className={styles.row}>
+          <h6>Condition</h6>
+          <p>{condition}</p>
+        </div>
+      ) : (
+        console.log("")
+      )}
 
       {notes && (
         <div className={styles.row}>
@@ -49,7 +69,7 @@ function City() {
         </div>
       )}
 
-      <div className={styles.row}>
+      {/* <div className={styles.row}>
         <h6>Learn more</h6>
         <a
           href={`https://en.wikipedia.org/wiki/${cityName}`}
@@ -58,7 +78,7 @@ function City() {
         >
           Check out {cityName} on Wikipedia &rarr;
         </a>
-      </div>
+      </div> */}
 
       <div>
         <BackButton />

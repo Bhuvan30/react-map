@@ -2,12 +2,13 @@ import { useSearchParams } from "react-router-dom";
 import styles from "./Map.module.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useState } from "react";
-import { useBins } from "../contexts/BinsContext";
+import { useIcons } from "../contexts/IconsContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import L from "leaflet"; // Make sure to import the 'leaflet' library
 import trashIcon from "../../public/trash.png";
 import officeIcon from "../../public/office.png";
+import currentLocIcon from "../../public/currentLoc.png";
 
 function GetIcon(Mapicon) {
   return L.icon({
@@ -17,15 +18,21 @@ function GetIcon(Mapicon) {
 }
 
 function Map() {
-  const { bins } = useBins();
-  const [mapPosition, setMapPosition] = useState([40, 0]);
+  const { icons } = useIcons();
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const {
     isLoading: isLoadingPosition,
     position: geoLocationPosition,
     getPosition,
   } = useGeolocation();
+
+  useEffect(function () {
+    getPosition();
+  }, []);
+
+  const [mapPosition, setMapPosition] = useState([13, 77]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
@@ -68,22 +75,36 @@ function Map() {
             </Popup>
           </Marker>
         ))} */}
-        {bins.map((bin) => (
+        {icons.map((icon) => (
           <Marker
-            key={bin.id}
-            position={[bin.position.lat, bin.position.lng]}
+            key={icon.id}
+            position={[icon.position.lat, icon.position.lng]}
             icon={
-              bin.icon === "trashIcon"
+              icon.icon === "trashIcon"
                 ? GetIcon(trashIcon)
                 : GetIcon(officeIcon)
             }
           >
             <Popup>
-              <span>{bin.emoji}</span>
-              <span>{bin.cityName}</span>
+              <span>{icon.emoji}</span>
+              <span>{icon.iconName}</span>
             </Popup>
           </Marker>
         ))}
+        {geoLocationPosition !== null ? (
+          <Marker
+            key={geoLocationPosition.lat}
+            position={[geoLocationPosition.lat, geoLocationPosition.lng]}
+            icon={GetIcon(currentLocIcon)}
+          >
+            <Popup>
+              <span>📌</span>
+              <span>your location</span>
+            </Popup>
+          </Marker>
+        ) : (
+          console.log("loading")
+        )}
 
         <ChangeCenter position={mapPosition} />
       </MapContainer>
